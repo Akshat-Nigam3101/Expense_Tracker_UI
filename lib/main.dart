@@ -10,7 +10,7 @@ import 'dart:math';
 import 'model/transaction.dart';
 
 void main() {
-  runApp(const PaymentsApp_first());
+  runApp(const PaymentsApp());
 }
 
 class PaymentsApp_first extends StatelessWidget {

@@ -14,7 +14,7 @@ class PaymentsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-        primaryColor: Color(0xff3A3A3A),
+        primaryColor: Color.fromARGB(255, 0, 0, 0),
       ),
       debugShowCheckedModeBanner: false,
       home: const HomePage(),
@@ -36,7 +36,54 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.black,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: Colors.black,
+            icon: Icon(
+              Icons.comment_bank,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.lock_clock,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.orange,
+            icon: Container(
+              decoration: BoxDecoration(
+                color: Colors.orange,
+                border: Border.all(color: Colors.orange),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Icon(Icons.home),
+              ),
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person_outline,
+            ),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.settings,
+            ),
+            label: 'Home',
+          ),
+        ],
+      ),
+      backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.black,
         elevation: 0,
         title: const Padding(
           padding: EdgeInsets.only(
@@ -50,6 +97,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.bold,
+              backgroundColor: Colors.black,
             ),
           ),
         ),
