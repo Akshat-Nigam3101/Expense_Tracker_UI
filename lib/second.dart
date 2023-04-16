@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:my_app/first.dart';
 import 'package:my_app/home_screen.dart';
@@ -102,20 +104,27 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: SafeArea(
-        child: ListView(
-          children: <Widget>[
-            _buildCardSection(),
-            //  _buildSendMoneySection(context),
-            _buildTransactionsSection(),
-          ],
-        ),
+      body: ListView(
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                _buildCardSection(),
+                _buildCardSection(),
+                _buildCardSection(),
+              ],
+            ),
+          ),
+          _buildTransactionsSection()
+        ],
       ),
     );
   }
 
   Widget _buildCardSection() {
     return Container(
+      width: 370,
       color: Theme.of(context).primaryColor,
       child: Card(
         color: Colors.transparent,
