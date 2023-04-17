@@ -64,12 +64,12 @@ class _HomePageState extends State<HomePage> {
               ),
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Icon(Icons.home),
+                child: Icon(Icons.home_filled),
               ),
             ),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(
               Icons.person_outline,
             ),
@@ -87,21 +87,54 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
-        title: const Padding(
-          padding: EdgeInsets.only(
-            top: 12,
-            bottom: 8,
-            left: 8,
-            right: 8,
-          ),
-          child: Text(
-            "Tanya Myroniuk",
-            style: TextStyle(
-              fontSize: 32,
-              fontWeight: FontWeight.bold,
-              backgroundColor: Colors.black,
+        title: Stack(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(
+                top: 12,
+                bottom: 8,
+                left: 8,
+                right: 160,
+              ),
+              child: Text(
+                "       Tanya Myroniuk",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  backgroundColor: Colors.black,
+                ),
+              ),
             ),
-          ),
+            Positioned(
+              top: 0,
+              left: 45,
+              child: Text(
+                "Welcome back",
+                style: TextStyle(
+                  fontSize: 10,
+                  color: Colors.grey[700],
+                ),
+              ),
+            ),
+            Positioned(
+              left: 0,
+              child: IconButton(
+                icon: Icon(Icons.person),
+                onPressed: () {
+                  // do something
+                },
+              ),
+            ),
+            Positioned(
+              right: -10,
+              child: IconButton(
+                icon: Icon(Icons.mark_chat_unread_rounded),
+                onPressed: () {
+                  // do something
+                },
+              ),
+            ),
+          ],
         ),
       ),
       body: ListView(
@@ -116,7 +149,9 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          _buildTransactionsSection()
+          // _buildAppBar(),
+          _buildSendMoneySection(context),
+          _buildTransactionsSection(),
         ],
       ),
     );
@@ -144,10 +179,10 @@ class _HomePageState extends State<HomePage> {
             gradient: LinearGradient(
               // ignore: prefer_const_literals_to_create_immutables
               colors: [
-                Color(0xffa805ee),
-                Color(0xffC147EF),
-                Color(0xffDB61E7),
-                Color(0xffE863EC),
+                Color.fromARGB(255, 8, 234, 162),
+                Color.fromARGB(255, 7, 182, 147),
+                Color.fromARGB(255, 13, 63, 53),
+                Color.fromARGB(255, 37, 208, 180),
               ],
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
@@ -220,7 +255,7 @@ class _HomePageState extends State<HomePage> {
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 16,
-        horizontal: 24,
+        horizontal: 10,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -228,13 +263,15 @@ class _HomePageState extends State<HomePage> {
           Text(
             "",
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 10,
               fontWeight: FontWeight.bold,
             ),
           ),
+          Icon(Icons.search, size: 20, color: Colors.grey),
           Icon(
-            Icons.search,
-            size: 30,
+            Icons.maximize_rounded,
+            size: 20,
+            color: Colors.grey,
           )
         ],
       ),
@@ -260,15 +297,16 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.grey[100],
                   ),
                 ),
-                Text(
-                  "SEE MORE",
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.grey[900],
-                    letterSpacing: 2,
-                  ),
-                ),
+                _buildAppBar(),
+                // Text(
+                //   "SEE MORE",
+                //   style: TextStyle(
+                //     fontSize: 11,
+                //     fontWeight: FontWeight.w600,
+                //     color: Colors.grey[900],
+                //     letterSpacing: 2,
+                //   ),
+                // ),
               ],
             ),
           ),
@@ -343,18 +381,18 @@ class _HomePageState extends State<HomePage> {
                   children: <Widget>[
                     CircleAvatar(
                       radius: 25,
+                      backgroundColor: Color.fromARGB(
+                        _random.nextInt(256),
+                        _random.nextInt(256),
+                        _random.nextInt(256),
+                        _random.nextInt(256),
+                      ),
                       child: Text(
                         transaction.name.substring(0, 2).toUpperCase(),
                         style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                         ),
-                      ),
-                      backgroundColor: Color.fromARGB(
-                        _random.nextInt(256),
-                        _random.nextInt(256),
-                        _random.nextInt(256),
-                        _random.nextInt(256),
                       ),
                     ),
                     const SizedBox(
